@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Holic - Fashion Pria Premium</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body, .section-bg { 
+      font-family: 'Montserrat', sans-serif; 
+      background-color: #2b231f !important; 
+      color: #e5dada; 
+    }
+
+    .font-serif { 
+      font-family: 'Playfair Display', serif; 
+    }
+
+    /* Navbar Background Warna Solid */
+    .bg-dark-custom { 
+      background-color: #1c1613 !important; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .text-gold { 
+      color: #c8a97e; 
+    }
+
+    .text-light-muted { 
+      color: #a89f97; 
+    }
+
+    /* CSS Pure Parallax Section */
+    .parallax-section {
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1600&auto=format&fit=crop');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 500px;
+    }
+
+    /* Overlay gelap untuk menjaga legibilitas teks */
+    .parallax-overlay {
+      background: rgba(0, 0, 0, 0.55);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .parallax-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Tombol Parallax Biru */
+    .btn-parallax-blue {
+      background-color: #0d6efd;
+      color: #ffffff;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-parallax-blue:hover {
+      background-color: #0b5ed7;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+    }
+
+    /* Hover Animations & Custom Elements */
+    .btn-outline-gold { 
+      border-color: #c8a97e; 
+      color: #f3ece7; 
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-gold:hover, 
+    .btn-gold { 
+      background: #c8a97e; 
+      color: #1c1613; 
+      border-color: #c8a97e; 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(200, 169, 126, 0.3);
+    }
+
+    .btn-filter.active {
+      background-color: #c8a97e !important;
+      color: #1c1613 !important;
+      border-color: #c8a97e !important;
+    }
+
+    .nav-link {
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #c8a97e !important;
+      font-weight: 600;
+    }
+
+    .card-custom { 
+      background: rgba(38, 30, 26, 0.7); 
+      border: 1px solid rgba(255, 255, 255, 0.08); 
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .card-custom:hover {
+      transform: translateY(-8px);
+      border-color: rgba(200, 169, 126, 0.5);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-custom img {
+      transition: transform 0.5s ease;
+    }
+
+    .card-custom:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-img-wrapper {
+      overflow: hidden;
+      border-radius: 0.375rem;
+    }
+
+    .gallery-img {
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.08);
+      filter: brightness(1.1);
+    }
+
+    .accordion-item { 
+      background: transparent; 
+      border: none; 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    }
+
+    .accordion-button { 
+      background: transparent; 
+      color: #e5dada; 
+      box-shadow: none !important; 
+    }
+
+    .accordion-button:not(.collapsed) { 
+      background: transparent; 
+      color: #c8a97e; 
+    }
+
+    .accordion-button::after { 
+      filter: invert(1); 
+    }
+
+    .form-control-custom { 
+      background: rgba(255, 255, 255, 0.05); 
+      border: 1px solid rgba(255, 255, 255, 0.15); 
+      color: #fff; 
+      transition: all 0.3s ease;
+    }
+
+    .form-control-custom:focus { 
+      background: rgba(255, 255, 255, 0.1); 
+      border-color: #c8a97e; 
+      color: #fff; 
+      box-shadow: 0 0 10px rgba(200, 169, 126, 0.2); 
+    }
+
+    .product-item {
+      transition: all 0.4s ease;
+    }
+
+    .product-item.hide {
+      display: none !important;
+    }
+
+    .footer-link {
+      color: #a89f97;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: #c8a97e;
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-smooth-scroll="true" tabindex="0">
+
+  <!-- Navbar -->
+  <nav id="mainNavbar" class="navbar navbar-expand-lg sticky-top bg-dark-custom navbar-dark border-bottom border-secondary border-opacity-10 py-3">
+    <div class="container">
+      <a class="navbar-brand font-serif fw-bold fs-3 text-gold" href="#">SH</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-lg-3">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Tentang Kami</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#products">Produk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#gallery">Galeri</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#faq">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonials">Testimoni</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Hubungi Kami</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Parallax Banner Section -->
+  <section id="home" class="parallax-section d-flex align-items-center justify-content-center text-center py-5">
+    <div class="parallax-overlay"></div>
+    <div class="container parallax-content py-5" data-aos="fade-up">
+      <h1 class="display-4 font-serif fw-bold text-white mb-3">
+        STYLE HOLIC
+      </h1>
+      <p class="fs-5 text-light mb-4 text-uppercase tracking-widest">
+        Definisi Baru Fashion Pria Modern & Elegan
+      </p>
+      <a href="#products" class="btn btn-parallax-blue text-decoration-none">
+        Jelajahi Koleksi
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-bg py-5 border-bottom border-secondary border-opacity-10">
+    <div class="container py-4">
+      <div class="row align-items-center g-4">
+
+        <div class="col-lg-6" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded shadow object-fit-cover" alt="Tentang Style Holic">
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left">
+          <h2 class="display-5 font-serif text-uppercase mb-2">
+            Tentang Kami
+          </h2>
+
+          <p class="text-uppercase text-light-muted tracking-widest small mb-4">
+            GAYA YANG BERBICARA, KUALITAS YANG TAHAN LAMA.
+          </p>
+
+          <p class="text-light-muted mb-4">
+            Di Style Holic, kami percaya bahwa fashion lebih dari sekadar pakaian—ini adalah cara untuk mengekspresikan siapa diri Anda. Misi kami adalah menyediakan fashion pria modern berkualitas tinggi yang memadukan keanggunan, kenyamanan, dan rasa percaya diri.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-4 d-flex align-items-center gap-2">
+              <i class="fa-solid fa-shirt fs-4 text-gold"></i>
+              <span class="small fw-semibold">Desain Modern</span>
+            </div>
+            <div class="col-4 d-flex align-items-center gap-2">
+              <i class="fa-solid fa-circle-check fs-4 text-gold"></i>
+              <span class="small fw-semibold">Kualitas Premium</span>
+            </div>
+            <div class="col-4 d-flex align-items-center gap-2">
+              <i class="fa-solid fa-user fs-4 text-gold"></i>
+              <span class="small fw-semibold">Khusus Untuk Anda</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="section-bg py-5 border-bottom border-secondary border-opacity-10 text-center">
+    <div class="container py-4">
+
+      <div data-aos="fade-up">
+        <p class="text-uppercase text-light-muted small mb-1">
+          — KOLEKSI KAMI —
+        </p>
+
+        <h2 class="display-5 font-serif text-uppercase mb-2">
+          Produk Style Holic
+        </h2>
+
+        <p class="text-light-muted mb-4">
+          Tingkatkan Gaya Anda, Setiap Hari
+        </p>
+
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+          <button class="btn btn-filter btn-gold rounded-pill px-3 btn-sm active" data-filter="all">Semua</button>
+          <button class="btn btn-filter btn-outline-secondary text-light rounded-pill px-3 btn-sm" data-filter="kemeja">Kemeja</button>
+          <button class="btn btn-filter btn-outline-secondary text-light rounded-pill px-3 btn-sm" data-filter="kaos">Kaos</button>
+          <button class="btn btn-filter btn-outline-secondary text-light rounded-pill px-3 btn-sm" data-filter="jaket">Jaket</button>
+        </div>
+      </div>
+
+      <div class="row g-4 text-start" id="productContainer">
+
+        <!-- Kemeja 1 -->
+        <div class="col-md-4 product-item" data-category="kemeja" data-aos="fade-up" data-aos-delay="100">
+          <div class="card card-custom h-100 p-3">
+            <div class="overflow-hidden rounded">
+              <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=600&auto=format&fit=crop" class="card-img-top object-fit-cover" height="260" alt="Kemeja Putih">
+            </div>
+            <div class="card-body px-0 pb-0">
+              <h5 class="card-title font-serif">Kemeja Putih Klasik</h5>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="fw-semibold">Rp199.000</span>
+                <button class="btn btn-outline-gold rounded-circle p-2">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kemeja 2 -->
+        <div class="col-md-4 product-item" data-category="kemeja" data-aos="fade-up" data-aos-delay="200">
+          <div class="card card-custom h-100 p-3">
+            <div class="overflow-hidden rounded">
+              <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=600&auto=format&fit=crop" class="card-img-top object-fit-cover" height="260" alt="Kemeja Hitam">
+            </div>
+            <div class="card-body px-0 pb-0">
+              <h5 class="card-title font-serif">Kemeja Hitam Basic</h5>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="fw-semibold">Rp199.000</span>
+                <button class="btn btn-outline-gold rounded-circle p-2">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jaket -->
+        <div class="col-md-4 product-item" data-category="jaket" data-aos="fade-up" data-aos-delay="300">
+          <div class="card card-custom h-100 p-3">
+            <div class="overflow-hidden rounded">
+              <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=600&auto=format&fit=crop" class="card-img-top object-fit-cover" height="260" alt="Jaket">
+            </div>
+            <div class="card-body px-0 pb-0">
+              <h5 class="card-title font-serif">Jaket Modern</h5>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="fw-semibold">Rp299.000</span>
+                <button class="btn btn-outline-gold rounded-circle p-2">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kaos -->
+        <div class="col-md-4 product-item" data-category="kaos" data-aos="fade-up" data-aos-delay="400">
+          <div class="card card-custom h-100 p-3">
+            <div class="overflow-hidden rounded">
+              <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop" class="card-img-top object-fit-cover" height="260" alt="Kaos Premium">
+            </div>
+            <div class="card-body px-0 pb-0">
+              <h5 class="card-title font-serif">Kaos Premium Cotton</h5>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="fw-semibold">Rp129.000</span>
+                <button class="btn btn-outline-gold rounded-circle p-2">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section-bg py-5 border-bottom border-secondary border-opacity-10">
+    <div class="container py-4">
+
+      <div class="text-center mb-4" data-aos="fade-up">
+        <h2 class="display-5 font-serif text-uppercase mb-2">Galeri</h2>
+        <p class="text-light-muted">Jelajahi bagaimana Style Holic hidup melalui setiap detail koleksi kami.</p>
+      </div>
+
+      <div class="row g-2">
+        <div class="col-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="gallery-img-wrapper h-100">
+            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=400&auto=format&fit=crop" class="img-fluid object-fit-cover h-100 w-100 gallery-img" alt="Galeri">
+          </div>
+        </div>
+
+        <div class="col-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="gallery-img-wrapper h-100">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=400&auto=format&fit=crop" class="img-fluid object-fit-cover h-100 w-100 gallery-img" alt="Galeri">
+          </div>
+        </div>
+
+        <div class="col-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="gallery-img-wrapper h-100">
+            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=400&auto=format&fit=crop" class="img-fluid object-fit-cover h-100 w-100 gallery-img" alt="Galeri">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section-bg py-5 border-bottom border-secondary border-opacity-10">
+    <div class="container py-4">
+
+      <div class="text-center mb-4" data-aos="fade-up">
+        <h2 class="display-5 font-serif text-uppercase mb-2">FAQ</h2>
+        <p class="text-light-muted mb-3">Pertanyaan yang sering diajukan mengenai layanan kami.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
+                  Apa itu Style Holic?
+                </button>
+              </h2>
+              <div id="f1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-light-muted">
+                  Brand fashion pria premium dengan kualitas abadi.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
+                  Ke mana saja pengiriman dilakukan?
+                </button>
+              </h2>
+              <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-light-muted">
+                  Kami melayani pengiriman ke seluruh wilayah Indonesia.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3">
+                  Berapa lama pengiriman?
+                </button>
+              </h2>
+              <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-light-muted">
+                  Pengiriman membutuhkan waktu 2-5 hari kerja.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section-bg py-5 border-bottom border-secondary border-opacity-10 text-center">
+    <div class="container py-4">
+
+      <h2 class="display-5 font-serif text-uppercase mb-4" data-aos="fade-up">Testimoni</h2>
+
+      <div class="row g-4 text-start">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card card-custom p-3 border-warning border-opacity-25 h-100">
+            <div class="text-gold mb-2">★★★★★</div>
+            <p class="fst-italic text-light-muted small mb-3">"Kualitasnya luar biasa dan desainnya abadi."</p>
+            <h6 class="mb-0 fw-bold">Rizky Pratama</h6>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card card-custom p-3 border-warning border-opacity-25 h-100">
+            <div class="text-gold mb-2">★★★★★</div>
+            <p class="fst-italic text-light-muted small mb-3">"Pengiriman cepat dan respon sangat baik!"</p>
+            <h6 class="mb-0 fw-bold">Anisa Rahma</h6>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card card-custom p-3 border-warning border-opacity-25 h-100">
+            <div class="text-gold mb-2">★★★★★</div>
+            <p class="fst-italic text-light-muted small mb-3">"Toko fashion pria langganan terbaik."</p>
+            <h6 class="mb-0 fw-bold">Dewi Lestari</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-bg py-5">
+    <div class="container py-4">
+
+      <div class="text-center mb-4" data-aos="fade-up">
+        <h2 class="display-5 font-serif text-uppercase mb-2">Hubungi Kami</h2>
+        <p class="text-light-muted mb-3">+62 812 3456 7890 | hello@styleholic.com</p>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+        <!-- Form Kontak -->
+        <div class="col-lg-6" data-aos="fade-right">
+          <form onsubmit="event.preventDefault();" class="card card-custom p-4 h-100 justify-content-center">
+            <div class="mb-3">
+              <label class="form-label">Nama</label>
+              <input type="text" class="form-control form-control-custom" placeholder="Masukkan nama" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control form-control-custom" placeholder="Masukkan Email" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Pesan</label>
+              <textarea class="form-control form-control-custom" rows="4" placeholder="Tulis Pesan"></textarea>
+            </div>
+
+            <button class="btn btn-outline-gold w-100 py-2 text-uppercase fw-semibold mt-2">
+              Kirim Pesan
+            </button>
+          </form>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="card card-custom p-2 h-100 overflow-hidden">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127104.83403207018!2d119.37617478640733!3d-5.147665099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbf013d5b204629%3A0xa22b10a2f4c9c7f1!2sMakassar%2C%20South%20Sulawesi!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+              width="100%" 
+              height="100%" 
+              style="border:0; min-height: 350px; border-radius: 0.25rem;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-custom pt-5 pb-4 border-top border-secondary border-opacity-10 text-light-muted">
+    <div class="container">
+      <div class="row g-4 mb-4 text-start">
+        
+        <!-- Kolom Brand -->
+        <div class="col-lg-4 col-md-6">
+          <h4 class="font-serif fw-bold text-gold mb-3">Style Holic</h4>
+          <p class="small">Fashion pria premium dengan gaya abadi untuk melengkapi setiap momen berharga Anda.</p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#" class="text-gold fs-5"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="text-gold fs-5"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="text-gold fs-5"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="text-gold fs-5"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Kolom Link Navigasi -->
+        <div class="col-lg-2 col-md-6">
+          <h6 class="text-light text-uppercase fw-bold mb-3">Navigasi</h6>
+          <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+            <li><a href="#home" class="footer-link">Beranda</a></li>
+            <li><a href="#about" class="footer-link">Tentang Kami</a></li>
+            <li><a href="#products" class="footer-link">Produk</a></li>
+            <li><a href="#gallery" class="footer-link">Galeri</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom Bantuan & Layanan -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-light text-uppercase fw-bold mb-3">Layanan</h6>
+          <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+            <li><a href="#faq" class="footer-link">FAQ</a></li>
+            <li><a href="#testimonials" class="footer-link">Testimoni</a></li>
+            <li><a href="#contact" class="footer-link">Hubungi Kami</a></li>
+            <li><a href="#" class="footer-link">Kebijakan Privasi</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom Kontak Informasi -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-light text-uppercase fw-bold mb-3">Alamat</h6>
+          <p class="small mb-2"><i class="fa-solid fa-location-dot text-gold me-2"></i> Jl. Fashion Raya No. 123, Indonesia</p>
+          <p class="small mb-2"><i class="fa-solid fa-phone text-gold me-2"></i> +62 812 3456 7890</p>
+          <p class="small mb-0"><i class="fa-solid fa-envelope text-gold me-2"></i> hello@styleholic.com</p>
+        </div>
+
+      </div>
+
+      <hr class="border-secondary border-opacity-25 my-4">
+
+      <div class="text-center small">
+        <p class="mb-0">© 2026 Style Holic. Hak cipta dilindungi undang-undang.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS JS & Initialization -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // Script JS Filter Produk
+    document.querySelectorAll('.btn-filter').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.btn-filter').forEach(btn => {
+          btn.classList.remove('active', 'btn-gold');
+          btn.classList.add('btn-outline-secondary', 'text-light');
+        });
+        this.classList.add('active', 'btn-gold');
+        this.classList.remove('btn-outline-secondary', 'text-light');
+
+        const filterValue = this.getAttribute('data-filter');
+        const products = document.querySelectorAll('.product-item');
+
+        products.forEach(product => {
+          if (filterValue === 'all' || product.getAttribute('data-category') === filterValue) {
+            product.classList.remove('hide');
+          } else {
+            product.classList.add('hide');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
